@@ -1,0 +1,26 @@
+/**
+ * 
+ */
+package lesCas;
+
+import java.sql.Connection;
+
+import table.Client;
+
+/**
+ * @author alassane
+ *
+ */
+public class OperationPrepose {
+	private Connection Connexion; 
+
+	public OperationPrepose(Connection conn) {
+		// TODO Auto-generated constructor stub
+		this.Connexion = conn;
+	}
+	
+	public addClient(Client cl) {
+		
+	}
+
+}

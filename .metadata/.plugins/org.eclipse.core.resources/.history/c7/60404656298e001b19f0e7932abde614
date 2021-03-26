@@ -1,0 +1,25 @@
+package table;
+
+import java.util.Date;
+
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+public class Facture {
+	
+	// Attributs
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd") 
+	protected Date dateFacture;
+	
+	protected Client client;
+
+	protected Double montant;
+
+	public Facture() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

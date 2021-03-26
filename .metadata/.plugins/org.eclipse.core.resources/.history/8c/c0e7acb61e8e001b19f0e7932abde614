@@ -1,0 +1,16 @@
+/**
+ * 
+ */
+package lesCas;
+
+/**
+ * @author alassane
+ *
+ */
+public class AjouterUnClient {
+
+	public AjouterUnClient() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

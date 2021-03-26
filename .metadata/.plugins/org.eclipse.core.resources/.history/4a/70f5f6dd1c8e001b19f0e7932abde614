@@ -1,0 +1,15 @@
+package table;
+
+import java.util.HashSet;
+import java.util.List;
+
+public class Prepose extends PersonneLoation {
+	
+	// Attributs
+	protected List<Client> listClient;
+
+	public Prepose() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

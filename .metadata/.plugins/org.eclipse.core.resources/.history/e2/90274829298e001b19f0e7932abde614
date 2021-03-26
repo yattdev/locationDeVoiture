@@ -1,0 +1,9 @@
+package table;
+
+public class Facture {
+
+	public Facture() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

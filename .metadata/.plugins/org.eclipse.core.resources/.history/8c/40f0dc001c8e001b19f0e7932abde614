@@ -1,0 +1,42 @@
+package table;
+import java.lang.String;
+import java.util.Date;
+
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+public class Client {
+	
+	// Attribut
+	protected String nom = "";
+	protected String prenom = "";
+	protected String adress = "";
+	protected int tel;
+	protected int numPermis;
+	protected int numCart;
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd") 
+	protected Date anneeNaissance;
+	
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd") 
+	protected Date anneeExpCarte;
+	
+	// Prepose
+	protected Prepose prepose;
+	
+
+	public Client() {
+		// TODO Auto-generated constructor stub
+	}
+
+
+	@Override
+	public String toString() {
+		return "Client [" + (nom != null ? "nom=" + nom + ", " : "") + (prenom != null ? "prenom=" + prenom + ", " : "")
+				+ "tel=" + tel + ", numPermis=" + numPermis + ", numCart=" + numCart + "]";
+	}
+
+}

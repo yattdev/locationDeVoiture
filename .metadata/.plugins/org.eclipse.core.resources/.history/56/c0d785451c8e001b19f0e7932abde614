@@ -1,0 +1,16 @@
+package table;
+
+public class PersonneLoation {
+
+	// Attribut
+	protected String nom = "";
+	protected String prenom = "";
+	protected String username = "";
+	protected String password = "";
+
+
+	public PersonneLoation() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

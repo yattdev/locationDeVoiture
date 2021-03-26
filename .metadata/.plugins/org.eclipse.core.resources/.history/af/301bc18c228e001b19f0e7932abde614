@@ -1,0 +1,56 @@
+package table;
+
+import java.util.HashSet;
+import java.util.List;
+
+import lesCas.OperationPrepose;
+
+import java.lang.*;
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+public class Prepose extends PersonneLoation {
+
+	// Attributs
+	protected List<Client> listClient;
+
+	private Connection connexion; 
+	private Statement stat;
+	
+	public Prepose(Connection conn) {
+		this.connexion = conn;
+		try {
+			this.stat = this.connexion.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
+	/**
+	 * @return the listClient
+	 */
+	public List<Client> getListClient() {
+		return listClient;
+	}
+
+	/**
+	 * @param listClient the listClient to set
+	 */
+	public void setListClient(List<Client> listClient) {
+		this.listClient = listClient;
+	}
+
+	public Prepose(String nom, String prenom, String username, String password) {
+		this.setNom(nom);
+		this.setPrenom(prenom);;
+		this.setUsername(username);
+		this.setPassword(password);
+	}
+	
+	public ajouterClient(Client cl) {
+//		OperationPrepose
+	}
+
+}

@@ -1,0 +1,38 @@
+package table;
+
+import java.util.Date;
+import java.util.List;
+
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+public class Location {
+	
+	// Attributs
+	protected double kilometrage;
+
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd") 
+	protected Date dateRetour;
+
+	protected double montantLocattion;
+	
+	protected Prepose prepose;
+	
+	protected Client client;
+	
+	protected List<Vehicule> vehicule;
+
+	public Location() {
+		// TODO Auto-generated constructor stub
+	}
+	
+	public void addClient(Client client) {
+		this.prepose.getListClient().add(client);
+	}
+	
+	
+
+}

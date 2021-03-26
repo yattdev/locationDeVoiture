@@ -1,0 +1,31 @@
+package main;
+import java.awt.print.Printable;
+import java.sql.*;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	try {
+		// 1 Get connextion f=to dataBase
+		Connection Conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/locattionDB", "alassane", "7678_gone");
+		
+		// 2 Create a statement 
+		Statement stat = myConn.createStatement();
+		
+		// 3 Execcute SQL query
+		ResultSet resul = stat.executeQuery("select * from employees");
+		
+		// 4 Process the result set
+		while(resul.next()) {
+		System.out.print(resul.getString('nom')+", "+ resul.getString('prenom'));
+		}
+	}catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}
+		
+
+	}
+
+}

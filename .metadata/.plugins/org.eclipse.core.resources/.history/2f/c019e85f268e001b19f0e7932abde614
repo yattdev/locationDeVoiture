@@ -1,0 +1,42 @@
+package main;
+import java.awt.print.Printable;
+import java.sql.*;
+import java.util.Scanner;
+
+public class Main {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+	try {
+		// 1 Get connextion f=to dataBase
+		Connection Connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/locationDB", "alassane", "7678_gone");
+		/*
+		 * // 4 Process the result set while(resul.next()) {
+		 * System.out.println(resul.getString("nom")+", "+ resul.getString("prenom")); }
+		 */
+	}catch (Exception e) {
+		// TODO: handle exception
+		e.printStackTrace();
+	}
+	Scanner input = new Scanner(System.in);
+	System.out.println("#############################################");;
+	System.out.println("1: Ajouter un client\n"
+	+ "2: Supprimer un client\n"
+	+ "3: Ajouter une location"
+	+ "4: Ajouter une reservation"
+	+ "5: Ajouter un vehicule\n"
+	+ "6: Supprimerr un vehicule\n"
+	+ "");
+	
+	String cas = input.nextLine();  // Read user inpu
+	switch (cas) {
+	case '1':
+		
+		break;
+
+	default:
+		break;
+	}
+	}
+
+}

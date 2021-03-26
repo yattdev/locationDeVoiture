@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+ xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+ layout:decorator="/EmployeTemplates/dashboard.html"> 
+ 
+ 
+<!--          <header layout:fragment="header.html">header</header> -->
+
+        <!-- ============================================================== -->
+        <!-- Left Sidebar - style you can find in sidebar.scss  -->
+        <!-- ============================================================== -->
+<!--         <aside layout:fragment="menu_aside.html">menu_aside</aside> -->
+        
+        
+		<div layout:fragment="employe_bread_crumb.html" th:insert="/EnginTemplates/bread_crumb.html"></div>
+ 
+		 <!-- DISPLAY LIST POST UNDER EMPLOYE NENU -->
+		<div layout:fragment="page-content" th:replace="/EnginTemplates/engin_table.html" aria-expanded="false" class="collapse"> </div>
+		
+	<script layout:fragment="custom_javascript" th:inline="javascript">
+		var showModalEngin = [[${showModalEngin}]];
+		if(showModalEngin == true){
+			 $(document).ready(function(){
+				$("#myEnginModal").modal('show');
+			});
+		}
+		
+		function enginDeleteConfirmation(id) {
+        	  var t = confirm("EST VOUS SURE DE VOULOIR EFFECTUER CETTE ACTION !?");
+        	  if (t == true) {
+        	    window.location = "/engin/delete/"+id;
+        	  } else {
+        	    txt = "You pressed Cancel!";
+        	  }
+        }
+	</script>
+	<script th:src="@{/dist/js/customs/searchOnType.js}"></script>
+	<script th:src="@{/dist/js/customs/notificationAlert.js}" type="text/javascript"></script>
+
+</html>

@@ -1,0 +1,6 @@
+INDEX VERSION 1.131+/home/alassane/Code/sts-4.6.1.RELEASE/workspace/.metadata/.plugins/org.eclipse.jdt.core
+2883694472.index
+2461333575.index
+68931419.index
+646308851.index
+1595451802.index

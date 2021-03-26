@@ -1,0 +1,9 @@
+package table;
+
+public class PersonneLoation {
+
+	public PersonneLoation() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

@@ -1,0 +1,1 @@
+INDEX VERSION 1.4+/home/alassane/Code/sts-4.6.1.RELEASE/workspace/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes

@@ -1,0 +1,9 @@
+package table;
+
+public class location {
+
+	public location() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

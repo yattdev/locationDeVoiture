@@ -1,0 +1,9 @@
+package table;
+
+public class Prepose {
+
+	public Prepose() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

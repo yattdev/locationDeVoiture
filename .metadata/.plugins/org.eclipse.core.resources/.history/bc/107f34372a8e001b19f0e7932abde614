@@ -1,0 +1,27 @@
+package table;
+
+import java.util.Date;
+
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+public class Reservation {
+
+	// Attributs
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd") 
+	protected Date dateReservation;
+
+	@Temporal(TemporalType.DATE)
+	@DateTimeFormat(pattern = "yyyy-MM-dd") 
+	protected Date dateRetour;
+	
+	protected double montant;
+
+	public Reservation() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

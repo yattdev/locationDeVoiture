@@ -1,0 +1,16 @@
+/**
+ * 
+ */
+package lesCas;
+
+/**
+ * @author alassane
+ *
+ */
+public class OperationPrepose {
+
+	public OperationPrepose() {
+		// TODO Auto-generated constructor stub
+	}
+
+}

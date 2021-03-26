@@ -1,0 +1,37 @@
+/**
+ * 
+ */
+package lesCas;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.sql.Statement;
+
+import table.Client;
+
+/**
+ * @author alassane
+ *
+ */
+public class OperationPrepose {
+	private Connection connexion; 
+	private Statement stat;
+
+	public OperationPrepose(Connection conn) {
+		// TODO Auto-generated constructor stub
+		this.connexion = conn;
+		try {
+			this.stat = this.connexion.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+	
+	public addClient(Client cl) {
+		
+		// 3 Execcute SQL query
+		ResultSet resul = stat.executeQuery("select * from client");
+	}
+
+}

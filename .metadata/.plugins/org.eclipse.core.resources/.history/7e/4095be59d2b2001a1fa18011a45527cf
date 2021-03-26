@@ -1,0 +1,137 @@
+package ma.polytech.application.controller;
+
+import java.text.SimpleDateFormat;
+
+import java.util.Date;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
+
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.propertyeditors.CustomDateEditor;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
+import org.springframework.web.bind.ServletRequestDataBinder;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.InitBinder;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+
+import ma.polytech.application.entity.Chantier;
+import ma.polytech.application.entity.Engin;
+import ma.polytech.application.repository.ApprovisionnementRepository;
+import ma.polytech.application.repository.ChantierRepository;
+import ma.polytech.application.repository.ConducteurRepository;
+import ma.polytech.application.repository.EntretienRepository;
+import ma.polytech.application.repository.PanneRepository;
+import ma.polytech.application.service.EnginService;
+
+@Controller
+public class EnginWEB {
+	@Autowired
+	private EnginService service;
+	@Autowired
+	private ApprovisionnementRepository apprepo;
+	@Autowired
+	private PanneRepository panrepo;
+	@Autowired
+	private ChantierRepository chantrepo;
+	@Autowired
+	private ConducteurRepository condrepo;
+	@Autowired
+	private EntretienRepository entreRepo;
+	
+	@RequestMapping("/engin/tousengins")
+	public String findAllEngins(Model model) {
+		List<Engin> engins = service.getAll();
+		model.addAttribute("engins", engins);
+		return "EnginTemplates/allEngin";
+	}
+	
+	@RequestMapping("/engin")
+	public String findAllEngin(Model model) {
+		List<Engin> engins = service.getAll();
+		model.addAttribute("engins", engins);
+		return "EnginTemplates/nouvauEngin";
+	}
+	
+	
+	@RequestMapping("/engin/etat-engin/{id}")
+	public String etatEngin(Model model, @PathVariable ("id") int id) {
+		 model.addAttribute("chantierlist", chantrepo.findAll());
+		  model.addAttribute("pannelist", panrepo.findAll());
+		  model.addAttribute("conducteurlist", condrepo.findAll());
+		  model.addAttribute("entretienlist", entreRepo.findAll());
+		  model.addAttribute("approvlist", apprepo.findAll());
+		model.addAttribute("engin", service.getById(id));
+		return "EnginTemplates/etatEngin";
+	}
+	
+	@RequestMapping("/engin/new-engin")
+	public String prepareNewEngin(Model model) {
+		Engin engin = new Engin();
+		  model.addAttribute("chantierlist", chantrepo.findAll());
+		  model.addAttribute("pannelist", panrepo.findAll());
+		  model.addAttribute("conducteurlist", condrepo.findAll());
+		  model.addAttribute("entretienlist", entreRepo.findAll());
+		  model.addAttribute("approvlist", apprepo.findAll());
+		  model.addAttribute("engin", engin);
+			return "EnginTemplates/dash-nouv-engin"; 
+	}
+	
+	@RequestMapping("/engin/next-engin")
+	public String prepareSuivantEngin(Model model) {
+		Engin engin = new Engin();
+		  model.addAttribute("chantierlist", chantrepo.findAll());
+		  model.addAttribute("pannelist", panrepo.findAll());
+		  model.addAttribute("conducteurlist", condrepo.findAll());
+		  model.addAttribute("entretienlist", entreRepo.findAll());
+		  model.addAttribute("approvlist", apprepo.findAll());
+		  model.addAttribute("engin", engin);
+		  
+		  return "EnginTemplates/finalEngin";
+	}
+	
+	@RequestMapping("/engin/save-engin")
+	public String saveNewEngin(@ModelAttribute("engin") Engin engin) {
+		service.saveEngin(engin);
+		return "redirect:/engin/tousengins";
+	}
+	
+
+	@PostMapping("/engin/editEngin/")
+	public String editEnginPost(@ModelAttribute("engin") Engin engin, @RequestParam("selectChantier") int tab[]){
+		Set<Chantier> chantier= new HashSet<Chantier>();
+		for(int i: tab) {
+			chantier.add(chantrepo.findById(i).orElse(null));
+		}
+		engin.setChantier(chantier);
+		service.updateEngin(engin);
+		return "redirect:/engin/tousengins";
+	}
+	
+	@RequestMapping("/engin/editEngin/{id}")
+	public String editEngin(Model model, @PathVariable ("id") int id) {
+		model.addAttribute("engin", service.getById(id));
+		 model.addAttribute("chantierlist", chantrepo.findAll());
+		return "EnginTemplates/nouveauEngin";
+	}
+	
+	
+	@RequestMapping("/engin/detailsEngin/{id}")
+	public String detailEngin(Model model, @PathVariable ("id") int id) {
+		model.addAttribute("engin", service.getById(id));
+		return "EnginTemplates/detailEngin";
+	}
+	
+	@RequestMapping("/engin/deleteEngin/{id}")
+	public String deleteEngin(@PathVariable ("id") int id) {
+		service.deleteEngin(id);
+		return "redirect:/engin/tousengins";
+	}
+}
